@@ -5,6 +5,7 @@ MODULES = jailed
 FINALPACKAGE = 1
 CODESIGN_IPA = 0
 PACKAGE_VERSION = X.X.X-X.X
+YTLITE_VERSION = X.X.X
 
 TWEAK_NAME = YTLitePlus
 DISPLAY_NAME = YouTube
@@ -27,7 +28,12 @@ SUBPROJECTS += Tweaks/Alderis Tweaks/iSponsorBlock Tweaks/YTUHD Tweaks/YouPiP Tw
 include $(THEOS_MAKE_PATH)/aggregate.mk
 
 YTLITE_PATH = Tweaks/YTLite
-YTLITE_VERSION := $(shell wget -qO- "https://github.com/dayanch96/YTLite/releases/latest" | grep -o -E '/tag/v[^"]+' | head -n 1 | sed 's/\/tag\/v//')
+# YTLITE_VERSION := $(shell wget -qO- "https://github.com/dayanch96/YTLite/releases/latest" | grep -o -E '/tag/v[^"]+' | head -n 1 | sed 's/\/tag\/v//')
+# # Override YTLITE_VERSION if YTLITE_VERSION_OVERRIDE is set
+# ifeq ($(YTLITE_VERSION_OVERRIDE),)
+# 	YTLITE_VERSION = $(YTLITE_VERSION_OVERRIDE)
+# endi
+
 YTLITE_DEB = $(YTLITE_PATH)/com.dvntm.ytlite_$(YTLITE_VERSION)_iphoneos-arm64.deb
 YTLITE_DYLIB = $(YTLITE_PATH)/var/jb/Library/MobileSubstrate/DynamicLibraries/YTLite.dylib
 YTLITE_BUNDLE = $(YTLITE_PATH)/var/jb/Library/Application\ Support/YTLite.bundle
